@@ -10,11 +10,12 @@
 
 | Integrante | Rol principal | Fortalezas | Responsabilidad inicial |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+|benjamin | | | |
+|vicente | | | |
+|daniel | | | |
+|erick | | | |
+|josue || | |
+|matias |
 
 ## Normas internas
 
