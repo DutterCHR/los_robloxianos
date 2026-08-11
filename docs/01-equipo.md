@@ -10,12 +10,12 @@
 
 | Integrante | Rol principal | Fortalezas | Responsabilidad inicial |
 |---|---|---|---|
-|benjamin | | | |
-|vicente | | | |
-|daniel | | | |
-|erick | | | |
-|josue || | |
-|matias |
+|benjamin |IA | | |
+|vicente |HTML | | |
+|daniel |DESAROLLADOR | | |
+|erick |SQL | | |
+|josue |HTML Y TESTER| | |
+|matias CSS Y TESTER|
 
 ## Normas internas
 
@@ -27,7 +27,7 @@
 
 ## Compromisos
 
-- [ ] Todos tendrán tareas verificables.
+- [SI ] Todos tendrán tareas verificables.
 - [ ] Todos participarán en la presentación.
 - [ ] Se utilizarán issues y pull requests.
 - [ ] Se respetarán los datos de la organización.
