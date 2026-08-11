@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,13 +9,14 @@
 
     <title>OpenEduca</title>
 
-    <!-- Conexión con el archivo CSS -->
+    <!-- Conexión con CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
+
 
     <!-- =========================
          CABECERA
@@ -36,6 +38,7 @@
 
 
         <div class="header-buttons">
+
 
             <!-- NOTIFICACIONES -->
 
@@ -222,6 +225,11 @@
 
     <main>
 
+
+        <!-- =========================
+             BIENVENIDA
+        ========================== -->
+
         <section class="bienvenida">
 
             <h1>
@@ -247,7 +255,7 @@
 
             <button
                 class="menu-button"
-                onclick="mostrarSalas()">
+                onclick="location.href='salas.html'">
 
                 <div class="menu-icon">
                     🚪
@@ -258,7 +266,7 @@
                 </h3>
 
                 <p>
-                    Consulta las salas del establecimiento.
+                    Busca una sala y conoce su ubicación.
                 </p>
 
             </button>
@@ -279,7 +287,7 @@
                 </h3>
 
                 <p>
-                    Busca el horario correspondiente a tu curso.
+                    Busca y revisa los horarios de clases.
                 </p>
 
             </button>
@@ -364,9 +372,13 @@
                 <div class="mapa">
 
                     <iframe
+
                         src="https://www.google.com/maps?q=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile&output=embed"
+
                         loading="lazy"
+
                         allowfullscreen
+
                         referrerpolicy="no-referrer-when-downgrade">
 
                     </iframe>
@@ -479,6 +491,7 @@
 
     <script>
 
+
         /* =========================
            ABRIR PANELES
         ========================== */
@@ -487,6 +500,7 @@
 
             const panel =
                 document.getElementById(id);
+
 
             const abierto =
                 panel.classList.contains("mostrar");
@@ -532,25 +546,6 @@
 
 
         /* =========================
-           SALAS
-        ========================== */
-
-        function mostrarSalas() {
-
-            alert(
-                "SALAS\n\n" +
-
-                "Edificio A\n" +
-                "Salas 101 - 105\n\n" +
-
-                "Edificio B\n" +
-                "Salas 201 - 205"
-            );
-
-        }
-
-
-        /* =========================
            BIBLIOTECA
         ========================== */
 
@@ -585,9 +580,11 @@
 
         }
 
+
     </script>
 
 
 </body>
 
 </html>
+```
