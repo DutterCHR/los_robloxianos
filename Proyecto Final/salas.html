@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Salas - OpenEduca</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <h2>
+            OpenEduca
+        </h2>
+
+    </div>
+
+</header>
+
+
+<main class="pagina-salas">
+
+
+    <section class="bienvenida">
+
+        <h1>
+            🚪 Salas del liceo
+        </h1>
+
+        <p>
+            Busca una sala o selecciona una de la lista
+            para conocer su ubicación.
+        </p>
+
+    </section>
+
+
+    <!-- BUSCADOR -->
+
+    <section class="buscador-salas">
+
+        <h2>
+            🔍 Buscar una sala
+        </h2>
+
+        <input
+            type="text"
+            id="busquedaSala"
+            placeholder="Ej: Sala 203"
+            onkeyup="buscarSala()">
+
+    </section>
+
+
+    <!-- LISTA -->
+
+    <section class="lista-salas">
+
+        <h2>
+            Salas disponibles
+        </h2>
+
+
+        <div id="listaSalas">
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 101')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 101
+                    </h3>
+
+                    <p>
+                        Primer piso · Edificio A
+                    </p>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 102')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 102
+                    </h3>
+
+                    <p>
+                        Primer piso · Edificio A
+                    </p>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 103')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 103
+                    </h3>
+
+                    <p>
+                        Primer piso · Edificio A
+                    </p>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 201')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 201
+                    </h3>
+
+                    <p>
+                        Segundo piso · Edificio B
+                    </p>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 202')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 202
+                    </h3>
+
+                    <p>
+                        Segundo piso · Edificio B
+                    </p>
+
+                </div>
+
+            </button>
+
+
+            <button
+                class="sala-item"
+                onclick="mostrarEnMapa('Sala 203')">
+
+                <div class="sala-icon">
+                    🚪
+                </div>
+
+                <div class="sala-info">
+
+                    <h3>
+                        Sala 203
+                    </h3>
+
+                    <p>
+                        Segundo piso · Edificio B
+                    </p>
+
+                </div>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="sinResultados"
+        class="sin-resultados">
+
+        <p>
+            No se encontró ninguna sala.
+        </p>
+
+    </section>
+
+
+    <a
+        href="proyecto.html"
+        class="regresar">
+
+        ← Regresar al menú principal
+
+    </a>
+
+
+</main>
+
+
+<script>
+
+function buscarSala() {
+
+    const texto =
+        document
+        .getElementById("busquedaSala")
+        .value
+        .toLowerCase();
+
+
+    const salas =
+        document.querySelectorAll(".sala-item");
+
+
+    let encontradas = 0;
+
+
+    salas.forEach(function(sala) {
+
+        const nombre =
+            sala
+            .querySelector("h3")
+            .textContent
+            .toLowerCase();
+
+
+        if (nombre.includes(texto)) {
+
+            sala.style.display = "flex";
+
+            encontradas++;
+
+        } else {
+
+            sala.style.display = "none";
+
+        }
+
+    });
+
+
+    const mensaje =
+        document.getElementById("sinResultados");
+
+
+    if (encontradas === 0) {
+
+        mensaje.style.display = "block";
+
+    } else {
+
+        mensaje.style.display = "none";
+
+    }
+
+}
+
+
+function mostrarEnMapa(sala) {
+
+    alert(
+        "Sala seleccionada:\n\n" +
+        sala +
+        "\n\n" +
+        "Aquí se mostrará su ubicación en el mapa interactivo."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

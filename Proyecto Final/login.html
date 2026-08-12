@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión - OpenEduca</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="login-body">
+
+
+    <main class="login-container">
+
+
+        <!-- LOGO -->
+
+        <div class="login-logo">
+
+            <div class="login-logo-icon">
+                🎓
+            </div>
+
+            <h1>
+                OpenEduca
+            </h1>
+
+            <p>
+                Liceo Antonio Varas de la Barra
+            </p>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-card">
+
+            <h2>
+                Iniciar sesión
+            </h2>
+
+            <p class="login-description">
+
+                Ingresa con tu correo institucional
+                para acceder a OpenEduca.
+
+            </p>
+
+
+            <form id="loginForm">
+
+
+                <!-- CORREO -->
+
+                <div class="login-input">
+
+                    <label for="correo">
+                        Correo institucional
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@liceoavb.cl"
+                        required>
+
+                </div>
+
+
+                <!-- CONTRASEÑA -->
+
+                <div class="login-input">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        required>
+
+                </div>
+
+
+                <!-- OPCIONES -->
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="recordar">
+
+                        Recordar sesión
+
+                    </label>
+
+
+                    <a href="#">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+                    Iniciar sesión
+
+                </button>
+
+
+                <p
+                    id="mensajeError"
+                    class="login-error">
+                </p>
+
+            </form>
+
+        </div>
+
+
+        <div class="login-info">
+
+            <p>
+                🔐 Utiliza tu correo institucional para acceder.
+            </p>
+
+        </div>
+
+
+        <a
+            href="proyecto.html"
+            class="regresar-login">
+
+            ← Volver al inicio
+
+        </a>
+
+    </main>
+
+
+    <script>
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const correo =
+                    document
+                    .getElementById("correo")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+                const password =
+                    document
+                    .getElementById("password")
+                    .value;
+
+
+                const mensaje =
+                    document
+                    .getElementById("mensajeError");
+
+
+                if (correo === "" || password === "") {
+
+                    mensaje.textContent =
+                        "Completa todos los campos.";
+
+                    return;
+
+                }
+
+
+                /*
+                    LOGIN TEMPORAL
+
+                    Más adelante estos datos serán
+                    enviados a Java mediante un Servlet.
+
+                    El servidor determinará automáticamente
+                    si el usuario es:
+
+                    - Estudiante
+                    - Docente
+                    - Administrador
+                */
+
+                mensaje.textContent =
+                    "El inicio de sesión real se conectará próximamente.";
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>

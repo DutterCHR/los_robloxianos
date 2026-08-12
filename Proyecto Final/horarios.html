@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Horarios - OpenEduca</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        <h2>
+            OpenEduca
+        </h2>
+
+    </div>
+
+</header>
+
+
+<main class="pagina-horarios">
+
+
+    <section class="bienvenida">
+
+        <h1>
+            🕒 Horarios
+        </h1>
+
+        <p>
+            Busca el horario correspondiente a tu curso.
+        </p>
+
+    </section>
+
+
+    <!-- BUSCADOR -->
+
+    <section class="buscador-horarios">
+
+        <h2>
+            🔍 Buscar horario
+        </h2>
+
+
+        <div class="formulario-horario">
+
+
+            <div>
+
+                <label for="curso">
+                    Curso
+                </label>
+
+                <select id="curso">
+
+                    <option value="">
+                        Selecciona tu curso
+                    </option>
+
+                    <option value="1medio">
+                        1° Medio
+                    </option>
+
+                    <option value="2medio">
+                        2° Medio
+                    </option>
+
+                    <option value="3medio">
+                        3° Medio
+                    </option>
+
+                    <option value="4medio">
+                        4° Medio
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label for="dia">
+                    Día
+                </label>
+
+                <select id="dia">
+
+                    <option value="">
+                        Todos los días
+                    </option>
+
+                    <option value="lunes">
+                        Lunes
+                    </option>
+
+                    <option value="martes">
+                        Martes
+                    </option>
+
+                    <option value="miercoles">
+                        Miércoles
+                    </option>
+
+                    <option value="jueves">
+                        Jueves
+                    </option>
+
+                    <option value="viernes">
+                        Viernes
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="buscar-horario-button"
+                onclick="buscarHorario()">
+
+                Buscar horario
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTADO -->
+
+    <section
+        id="resultadoHorario"
+        class="resultado-horario">
+
+        <h2>
+            📅 Horario
+        </h2>
+
+        <p class="horario-ayuda">
+            Selecciona un curso y presiona
+            "Buscar horario".
+        </p>
+
+    </section>
+
+
+    <a
+        href="proyecto.html"
+        class="regresar">
+
+        ← Regresar al menú principal
+
+    </a>
+
+
+</main>
+
+
+<script>
+
+function buscarHorario() {
+
+    const curso =
+        document
+        .getElementById("curso")
+        .value;
+
+
+    const dia =
+        document
+        .getElementById("dia")
+        .value;
+
+
+    const resultado =
+        document
+        .getElementById("resultadoHorario");
+
+
+    if (curso === "") {
+
+        resultado.innerHTML = `
+
+            <h2>
+                📅 Horario
+            </h2>
+
+            <p class="horario-error">
+                Selecciona un curso para buscar
+                su horario.
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    let nombreCurso = "";
+
+
+    if (curso === "1medio") {
+        nombreCurso = "1° Medio";
+    }
+
+    if (curso === "2medio") {
+        nombreCurso = "2° Medio";
+    }
+
+    if (curso === "3medio") {
+        nombreCurso = "3° Medio";
+    }
+
+    if (curso === "4medio") {
+        nombreCurso = "4° Medio";
+    }
+
+
+    resultado.innerHTML = `
+
+        <h2>
+            📅 ${nombreCurso}
+        </h2>
+
+        <div class="horario-item">
+
+            <strong>
+                08:00 - 09:30
+            </strong>
+
+            <span>
+                Matemática
+            </span>
+
+            <small>
+                🚪 Sala 101
+            </small>
+
+        </div>
+
+
+        <div class="horario-item">
+
+            <strong>
+                09:45 - 11:15
+            </strong>
+
+            <span>
+                Lenguaje
+            </span>
+
+            <small>
+                🚪 Sala 102
+            </small>
+
+        </div>
+
+
+        <div class="horario-item">
+
+            <strong>
+                11:30 - 13:00
+            </strong>
+
+            <span>
+                Programación
+            </span>
+
+            <small>
+                💻 Laboratorio
+            </small>
+
+        </div>
+
+
+        <div class="horario-item">
+
+            <strong>
+                14:00 - 15:30
+            </strong>
+
+            <span>
+                Inglés
+            </span>
+
+            <small>
+                🚪 Sala 203
+            </small>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
