@@ -8,22 +8,23 @@
 
     <title>Iniciar sesión - OpenEduca</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS del login -->
+    <link rel="stylesheet" href="login.css">
 
 </head>
 
 
-<body class="login-body">
+<body>
 
+    <div class="login-container">
 
-    <main class="login-container">
-
-
-        <!-- LOGO -->
+        <!-- =========================
+             LOGO
+        ========================== -->
 
         <div class="login-logo">
 
-            <div class="login-logo-icon">
+            <div class="logo-icon">
                 🎓
             </div>
 
@@ -38,7 +39,9 @@
         </div>
 
 
-        <!-- LOGIN -->
+        <!-- =========================
+             FORMULARIO
+        ========================== -->
 
         <div class="login-card">
 
@@ -46,30 +49,28 @@
                 Iniciar sesión
             </h2>
 
-            <p class="login-description">
-
-                Ingresa con tu correo institucional
-                para acceder a OpenEduca.
-
+            <p class="login-descripcion">
+                Ingresa con tu RUT y contraseña.
             </p>
 
 
             <form id="loginForm">
 
 
-                <!-- CORREO -->
+                <!-- RUT -->
 
-                <div class="login-input">
+                <div class="campo">
 
-                    <label for="correo">
-                        Correo institucional
+                    <label for="rut">
+                        RUT
                     </label>
 
                     <input
-                        type="email"
-                        id="correo"
-                        name="correo"
-                        placeholder="ejemplo@liceoavb.cl"
+                        type="text"
+                        id="rut"
+                        name="rut"
+                        placeholder="12.345.678-9"
+                        maxlength="12"
                         required>
 
                 </div>
@@ -77,7 +78,7 @@
 
                 <!-- CONTRASEÑA -->
 
-                <div class="login-input">
+                <div class="campo">
 
                     <label for="password">
                         Contraseña
@@ -93,9 +94,9 @@
                 </div>
 
 
-                <!-- OPCIONES -->
+                <!-- RECORDAR SESIÓN -->
 
-                <div class="login-options">
+                <div class="recordar">
 
                     <label>
 
@@ -107,11 +108,6 @@
 
                     </label>
 
-
-                    <a href="#">
-                        ¿Olvidaste tu contraseña?
-                    </a>
-
                 </div>
 
 
@@ -119,75 +115,145 @@
 
                 <button
                     type="submit"
-                    class="login-button">
+                    class="boton-login">
 
                     Iniciar sesión
 
                 </button>
 
 
+                <!-- MENSAJE DE ERROR -->
+
                 <p
-                    id="mensajeError"
-                    class="login-error">
+                    id="mensaje"
+                    class="mensaje">
                 </p>
+
 
             </form>
 
+
+            <!-- =========================
+                 INFORMACIÓN
+            ========================== -->
+
+            <div class="ayuda">
+
+                <p>
+                    ¿Problemas para iniciar sesión?
+                </p>
+
+                <span>
+                    Contacta al administrador de OpenEduca.
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 REGRESAR
+            ========================== -->
+
+            <a
+                href="proyecto.html"
+                class="boton-regresar">
+
+                ← Regresar al inicio
+
+            </a>
+
         </div>
 
-
-        <div class="login-info">
-
-            <p>
-                🔐 Utiliza tu correo institucional para acceder.
-            </p>
-
-        </div>
+    </div>
 
 
-        <a
-            href="proyecto.html"
-            class="regresar-login">
-
-            ← Volver al inicio
-
-        </a>
-
-    </main>
-
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script>
 
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function(event) {
+        const loginForm =
+            document.getElementById("loginForm");
+
+
+        const rutInput =
+            document.getElementById("rut");
+
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+
+        /* =========================
+           FORMATEAR RUT
+        ========================== */
+
+        rutInput.addEventListener("input", function() {
+
+            let rut = this.value
+                .replace(/[^0-9kK]/g, "")
+                .toUpperCase();
+
+
+            if (rut.length > 1) {
+
+                let cuerpo =
+                    rut.slice(0, -1);
+
+                let digito =
+                    rut.slice(-1);
+
+
+                cuerpo =
+                    cuerpo.replace(
+                        /\B(?=(\d{3})+(?!\d))/g,
+                        "."
+                    );
+
+
+                this.value =
+                    cuerpo + "-" + digito;
+
+            } else {
+
+                this.value = rut;
+
+            }
+
+        });
+
+
+        /* =========================
+           INICIAR SESIÓN
+        ========================== */
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
 
                 event.preventDefault();
 
 
-                const correo =
-                    document
-                    .getElementById("correo")
-                    .value
-                    .trim()
-                    .toLowerCase();
+                const rut =
+                    rutInput.value.trim();
 
 
                 const password =
-                    document
-                    .getElementById("password")
-                    .value;
+                    document.getElementById(
+                        "password"
+                    ).value.trim();
 
 
-                const mensaje =
-                    document
-                    .getElementById("mensajeError");
+                mensaje.textContent = "";
 
 
-                if (correo === "" || password === "") {
+                if (rut === "" || password === "") {
 
                     mensaje.textContent =
                         "Completa todos los campos.";
+
+                    mensaje.classList.add("error");
 
                     return;
 
@@ -195,23 +261,37 @@
 
 
                 /*
-                    LOGIN TEMPORAL
+                 * =================================
+                 * AUTENTICACIÓN
+                 * =================================
+                 *
+                 * Aquí posteriormente conectaremos
+                 * la base de datos.
+                 *
+                 * El sistema comprobará:
+                 *
+                 * RUT
+                 * +
+                 * contraseña
+                 *
+                 * y determinará automáticamente
+                 * si es:
+                 *
+                 * estudiante
+                 * docente
+                 * administrador
+                 *
+                 */
 
-                    Más adelante estos datos serán
-                    enviados a Java mediante un Servlet.
-
-                    El servidor determinará automáticamente
-                    si el usuario es:
-
-                    - Estudiante
-                    - Docente
-                    - Administrador
-                */
 
                 mensaje.textContent =
-                    "El inicio de sesión real se conectará próximamente.";
+                    "Inicio de sesión preparado para conectar con la base de datos.";
 
-            });
+                mensaje.classList.remove("error");
+                mensaje.classList.add("correcto");
+
+            }
+        );
 
     </script>
 

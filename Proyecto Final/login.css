@@ -1,0 +1,357 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f4f6f5;
+
+    color: #26383a;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.login-container {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    padding: 25px;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.login-logo {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+.logo-icon {
+
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 12px;
+
+    background: #234b4d;
+
+    color: white;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 27px;
+}
+
+
+.login-logo h1 {
+
+    color: #234b4d;
+
+    font-size: 26px;
+
+    margin-bottom: 5px;
+}
+
+
+.login-logo p {
+
+    color: #718080;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   TARJETA LOGIN
+========================= */
+
+.login-card {
+
+    background: white;
+
+    border: 1px solid #dfe6e3;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.login-card h2 {
+
+    color: #294e50;
+
+    font-size: 21px;
+
+    margin-bottom: 7px;
+}
+
+
+.login-descripcion {
+
+    color: #7a8785;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+.campo {
+
+    margin-bottom: 18px;
+}
+
+
+.campo label {
+
+    display: block;
+
+    color: #315657;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+.campo input {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #cfd9d5;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.campo input:focus {
+
+    border-color: #4f7d70;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 125, 112, 0.1);
+}
+
+
+/* =========================
+   RECORDAR SESIÓN
+========================= */
+
+.recordar {
+
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+    color: #687774;
+}
+
+
+.recordar label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    cursor: pointer;
+}
+
+
+.recordar input {
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BOTÓN LOGIN
+========================= */
+
+.boton-login {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #234b4d;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.boton-login:hover {
+
+    background: #315d5f;
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje {
+
+    text-align: center;
+
+    font-size: 13px;
+
+    margin-top: 15px;
+}
+
+
+.mensaje.error {
+
+    color: #b94a48;
+}
+
+
+.mensaje.correcto {
+
+    color: #4f7d70;
+}
+
+
+/* =========================
+   AYUDA
+========================= */
+
+.ayuda {
+
+    text-align: center;
+
+    border-top: 1px solid #e8ecea;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+}
+
+
+.ayuda p {
+
+    color: #526260;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+.ayuda span {
+
+    color: #87928f;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   BOTÓN REGRESAR
+========================= */
+
+.boton-regresar {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #315f60;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+.boton-regresar:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-container {
+
+        padding: 15px;
+    }
+
+    .login-card {
+
+        padding: 25px 20px;
+    }
+
+}

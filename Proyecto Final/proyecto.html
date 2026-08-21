@@ -36,26 +36,40 @@
 
         <div class="header-buttons">
 
+            <!-- NOTIFICACIONES -->
+
             <button
                 class="header-button"
                 onclick="abrirPanel('notificaciones')">
+
                 🔔
+
             </button>
 
+
+            <!-- AJUSTES -->
 
             <button
                 class="header-button"
                 onclick="abrirPanel('ajustes')">
+
                 ⚙️
+
             </button>
 
+
+            <!-- PERFIL -->
 
             <button
                 class="header-button"
                 onclick="abrirPanel('perfil')">
+
                 👤
+
             </button>
 
+
+            <!-- INICIAR SESIÓN -->
 
             <a
                 href="login.html"
@@ -185,7 +199,7 @@
             </span>
 
             <strong>
-                Debes iniciar sesion
+                Debes iniciar sesión
             </strong>
 
         </div>
@@ -194,11 +208,11 @@
         <div class="panel-opcion">
 
             <span>
-                rol
+                Rol
             </span>
 
             <strong>
-                Debes iniciar sesion
+                Debes iniciar sesión
             </strong>
 
         </div>
@@ -326,7 +340,9 @@
         <section class="contenedor">
 
 
-            <!-- MAPA -->
+            <!-- =========================
+                 MAPA
+            ========================== -->
 
             <div class="tarjeta">
 
@@ -339,7 +355,9 @@
 
                     <a
                         class="abrir-maps"
+
                         href="https://www.google.com/maps/search/?api=1&query=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile"
+
                         target="_blank">
 
                         Abrir Maps ↗
@@ -352,10 +370,15 @@
                 <div class="mapa">
 
                     <iframe
+
                         src="https://www.google.com/maps?q=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile&output=embed"
+
                         loading="lazy"
+
                         allowfullscreen
+
                         referrerpolicy="no-referrer-when-downgrade">
+
                     </iframe>
 
                 </div>
@@ -363,7 +386,9 @@
             </div>
 
 
-            <!-- INFORMACIÓN -->
+            <!-- =========================
+                 INFORMACIÓN
+            ========================== -->
 
             <div class="tarjeta">
 
@@ -444,175 +469,9 @@
     </main>
 
 
-    <footer>
-
-        OpenEduca · Proyecto escolar 2026
-
-    </footer>
-
-
     <!-- =========================
-         JAVASCRIPT
+         FOOTER
     ========================== -->
-
-    <script>
-
-        function abrirPanel(id) {
-
-            const panel =
-                document.getElementById(id);
-
-            const abierto =
-                panel.classList.contains("mostrar");
-
-
-            document
-                .querySelectorAll(".panel")
-                .forEach(function(p) {
-
-                    p.classList.remove("mostrar");
-
-                });
-
-
-            if (!abierto) {
-
-                panel.classList.add("mostrar");
-
-            }
-
-        }
-
-
-        function modoOscuro() {
-
-            document.body.classList.toggle("oscuro");
-
-            document
-                .getElementById("switchOscuro")
-                .classList.toggle("activo");
-
-        }
-
-        function mostrarContacto() {
-
-            alert(
-                "CONTACTO\n\n" +
-                "Liceo Antonio Varas de la Barra\n\n" +
-                "Av. Loa #2200\n" +
-                "Arica, Chile"
-            );
-
-        }
-
-    </script>
-
-
-</body>
-
-</html>                        target="_blank">
-
-                        Abrir Maps ↗
-
-                    </a>
-
-                </div>
-
-
-                <div class="mapa">
-
-                    <iframe
-                        src="https://www.google.com/maps?q=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile&output=embed"
-                        loading="lazy"
-                        allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-
-                </div>
-
-            </div>
-
-
-            <!-- INFORMACIÓN -->
-
-            <div class="tarjeta">
-
-                <h2>
-                    Información
-                </h2>
-
-
-                <div class="dato">
-
-                    <strong>
-                        🏫 Establecimiento
-                    </strong>
-
-                    <span>
-                        Liceo Antonio Varas de la Barra
-                    </span>
-
-                </div>
-
-
-                <div class="dato">
-
-                    <strong>
-                        📍 Dirección
-                    </strong>
-
-                    <span>
-                        Avenida Loa #2200<br>
-                        Arica, Chile
-                    </span>
-
-                </div>
-
-
-                <div class="dato">
-
-                    <strong>
-                        🎓 Enseñanza
-                    </strong>
-
-                    <span>
-                        Educación Media Técnico Profesional
-                    </span>
-
-                </div>
-
-
-                <div class="dato">
-
-                    <strong>
-                        💻 OpenEduca
-                    </strong>
-
-                    <span>
-                        Plataforma digital para estudiantes.
-                    </span>
-
-                </div>
-
-
-                <div class="dato">
-
-                    <strong>
-                        🌐 Sitio del liceo
-                    </strong>
-
-                    <span>
-                        liceoavb.cl
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
 
     <footer>
 
@@ -627,6 +486,10 @@
 
     <script>
 
+        /* =========================
+           ABRIR PANELES
+        ========================== */
+
         function abrirPanel(id) {
 
             const panel =
@@ -635,6 +498,8 @@
             const abierto =
                 panel.classList.contains("mostrar");
 
+
+            // Cerrar todos los paneles
 
             document
                 .querySelectorAll(".panel")
@@ -645,6 +510,8 @@
                 });
 
 
+            // Abrir el seleccionado
+
             if (!abierto) {
 
                 panel.classList.add("mostrar");
@@ -654,9 +521,15 @@
         }
 
 
+        /* =========================
+           MODO OSCURO
+        ========================== */
+
         function modoOscuro() {
 
-            document.body.classList.toggle("oscuro");
+            document.body
+                .classList.toggle("oscuro");
+
 
             document
                 .getElementById("switchOscuro")
@@ -665,24 +538,22 @@
         }
 
 
-        function mostrarBiblioteca() {
-
-            alert(
-                "BIBLIOTECA\n\n" +
-                "Horario de atención:\n" +
-                "08:00 - 17:30"
-            );
-
-        }
-
+        /* =========================
+           CONTACTO
+        ========================== */
 
         function mostrarContacto() {
 
             alert(
+
                 "CONTACTO\n\n" +
+
                 "Liceo Antonio Varas de la Barra\n\n" +
+
                 "Av. Loa #2200\n" +
+
                 "Arica, Chile"
+
             );
 
         }
