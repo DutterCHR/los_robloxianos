@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión - OpenEduca</title>
+
+    <!-- CSS del login -->
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+
+<body>
+
+    <div class="login-container">
+
+        <!-- =========================
+             LOGO
+        ========================== -->
+
+        <div class="login-logo">
+
+            <div class="logo-icon">
+                🎓
+            </div>
+
+            <h1>
+                OpenEduca
+            </h1>
+
+            <p>
+                Liceo Antonio Varas de la Barra
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             FORMULARIO
+        ========================== -->
+
+        <div class="login-card">
+
+            <h2>
+                Iniciar sesión
+            </h2>
+
+            <p class="login-descripcion">
+                Ingresa con tu RUT y contraseña.
+            </p>
+
+
+            <form id="loginForm">
+
+
+                <!-- RUT -->
+
+                <div class="campo">
+
+                    <label for="rut">
+                        RUT
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rut"
+                        name="rut"
+                        placeholder="12.345.678-9"
+                        maxlength="12"
+                        required>
+
+                </div>
+
+
+                <!-- CONTRASEÑA -->
+
+                <div class="campo">
+
+                    <label for="password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Ingresa tu contraseña"
+                        required>
+
+                </div>
+
+
+                <!-- RECORDAR SESIÓN -->
+
+                <div class="recordar">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="recordar">
+
+                        Recordar sesión
+
+                    </label>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    type="submit"
+                    class="boton-login">
+
+                    Iniciar sesión
+
+                </button>
+
+
+                <!-- MENSAJE DE ERROR -->
+
+                <p
+                    id="mensaje"
+                    class="mensaje">
+                </p>
+
+
+            </form>
+
+
+            <!-- =========================
+                 INFORMACIÓN
+            ========================== -->
+
+            <div class="ayuda">
+
+                <p>
+                    ¿Problemas para iniciar sesión?
+                </p>
+
+                <span>
+                    Contacta al administrador de OpenEduca.
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 REGRESAR
+            ========================== -->
+
+            <a
+                href="proyecto.html"
+                class="boton-regresar">
+
+                ← Regresar al inicio
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+
+        const rutInput =
+            document.getElementById("rut");
+
+
+        const mensaje =
+            document.getElementById("mensaje");
+
+
+        /* =========================
+           FORMATEAR RUT
+        ========================== */
+
+        rutInput.addEventListener("input", function() {
+
+            let rut = this.value
+                .replace(/[^0-9kK]/g, "")
+                .toUpperCase();
+
+
+            if (rut.length > 1) {
+
+                let cuerpo =
+                    rut.slice(0, -1);
+
+                let digito =
+                    rut.slice(-1);
+
+
+                cuerpo =
+                    cuerpo.replace(
+                        /\B(?=(\d{3})+(?!\d))/g,
+                        "."
+                    );
+
+
+                this.value =
+                    cuerpo + "-" + digito;
+
+            } else {
+
+                this.value = rut;
+
+            }
+
+        });
+
+
+        /* =========================
+           INICIAR SESIÓN
+        ========================== */
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const rut =
+                    rutInput.value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value.trim();
+
+
+                mensaje.textContent = "";
+
+
+                if (rut === "" || password === "") {
+
+                    mensaje.textContent =
+                        "Completa todos los campos.";
+
+                    mensaje.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /*
+                 * =================================
+                 * AUTENTICACIÓN
+                 * =================================
+                 *
+                 * Aquí posteriormente conectaremos
+                 * la base de datos.
+                 *
+                 * El sistema comprobará:
+                 *
+                 * RUT
+                 * +
+                 * contraseña
+                 *
+                 * y determinará automáticamente
+                 * si es:
+                 *
+                 * estudiante
+                 * docente
+                 * administrador
+                 *
+                 */
+
+
+                mensaje.textContent =
+                    "Inicio de sesión preparado para conectar con la base de datos.";
+
+                mensaje.classList.remove("error");
+                mensaje.classList.add("correcto");
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

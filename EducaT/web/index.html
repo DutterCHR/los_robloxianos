@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OpenEduca</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         CABECERA
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🎓
+            </div>
+
+            <h2>
+                OpenEduca
+            </h2>
+
+        </div>
+
+
+        <div class="header-buttons">
+
+            <!-- NOTIFICACIONES -->
+
+            <button
+                class="header-button"
+                onclick="abrirPanel('notificaciones')">
+
+                🔔
+
+            </button>
+
+
+            <!-- AJUSTES -->
+
+            <button
+                class="header-button"
+                onclick="abrirPanel('ajustes')">
+
+                ⚙️
+
+            </button>
+
+
+            <!-- PERFIL -->
+
+            <button
+                class="header-button"
+                onclick="abrirPanel('perfil')">
+
+                👤
+
+            </button>
+
+
+            <!-- INICIAR SESIÓN -->
+
+            <a
+                href="login.html"
+                class="login-header-button">
+
+                Iniciar sesión
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         PANEL AJUSTES
+    ========================== -->
+
+    <div id="ajustes" class="panel">
+
+        <h3>
+            Ajustes de OpenEduca
+        </h3>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Modo oscuro
+            </span>
+
+            <div
+                id="switchOscuro"
+                class="switch"
+                onclick="modoOscuro()">
+            </div>
+
+        </div>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Notificaciones
+            </span>
+
+            <div
+                class="switch activo"
+                onclick="this.classList.toggle('activo')">
+            </div>
+
+        </div>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Sonidos
+            </span>
+
+            <div
+                class="switch activo"
+                onclick="this.classList.toggle('activo')">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PANEL NOTIFICACIONES
+    ========================== -->
+
+    <div id="notificaciones" class="panel">
+
+        <h3>
+            Notificaciones
+        </h3>
+
+
+        <div class="notificacion">
+            📢 Revisa los avisos del liceo.
+        </div>
+
+
+        <div class="notificacion">
+            📚 Recuerda revisar tu horario.
+        </div>
+
+
+        <div class="notificacion">
+            📝 Hay información nueva disponible.
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PANEL PERFIL
+    ========================== -->
+
+    <div id="perfil" class="panel">
+
+        <h3>
+            Mi perfil
+        </h3>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Usuario
+            </span>
+
+            <strong>
+                Invitado
+            </strong>
+
+        </div>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Curso
+            </span>
+
+            <strong>
+                Debes iniciar sesión
+            </strong>
+
+        </div>
+
+
+        <div class="panel-opcion">
+
+            <span>
+                Rol
+            </span>
+
+            <strong>
+                Debes iniciar sesión
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTENIDO
+    ========================== -->
+
+    <main>
+
+        <section class="bienvenida">
+
+            <h1>
+                Bienvenido a OpenEduca
+            </h1>
+
+            <p>
+                Plataforma de información y orientación
+                para estudiantes del Liceo Antonio Varas de la Barra.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             MENÚ PRINCIPAL
+        ========================== -->
+
+        <section class="menu">
+
+
+            <!-- SALAS -->
+
+            <button
+                class="menu-button"
+                onclick="location.href='salas.html'">
+
+                <div class="menu-icon">
+                    🚪
+                </div>
+
+                <h3>
+                    Salas
+                </h3>
+
+                <p>
+                    Busca una sala y conoce su ubicación.
+                </p>
+
+            </button>
+
+
+            <!-- HORARIOS -->
+
+            <button
+                class="menu-button"
+                onclick="location.href='horarios.html'">
+
+                <div class="menu-icon">
+                    🕒
+                </div>
+
+                <h3>
+                    Horarios
+                </h3>
+
+                <p>
+                    Busca y revisa los horarios de clases.
+                </p>
+
+            </button>
+
+
+            <!-- BIBLIOTECA -->
+
+            <button
+                class="menu-button"
+                onclick="location.href='biblioteca.html'">
+
+                <div class="menu-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Biblioteca
+                </h3>
+
+                <p>
+                    Información y horarios.
+                </p>
+
+            </button>
+
+
+            <!-- CONTACTO -->
+
+            <button
+                class="menu-button"
+                onclick="mostrarContacto()">
+
+                <div class="menu-icon">
+                    ☎️
+                </div>
+
+                <h3>
+                    Contacto
+                </h3>
+
+                <p>
+                    Información del establecimiento.
+                </p>
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             MAPA + INFORMACIÓN
+        ========================== -->
+
+        <section class="contenedor">
+
+
+            <!-- =========================
+                 MAPA
+            ========================== -->
+
+            <div class="tarjeta">
+
+                <div class="mapa-superior">
+
+                    <h2>
+                        📍 Ubicación
+                    </h2>
+
+
+                    <a
+                        class="abrir-maps"
+
+                        href="https://www.google.com/maps/search/?api=1&query=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile"
+
+                        target="_blank">
+
+                        Abrir Maps ↗
+
+                    </a>
+
+                </div>
+
+
+                <div class="mapa">
+
+                    <iframe
+
+                        src="https://www.google.com/maps?q=Liceo+Antonio+Varas+de+la+Barra,+Avenida+Loa+2200,+Arica,+Chile&output=embed"
+
+                        loading="lazy"
+
+                        allowfullscreen
+
+                        referrerpolicy="no-referrer-when-downgrade">
+
+                    </iframe>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 INFORMACIÓN
+            ========================== -->
+
+            <div class="tarjeta">
+
+                <h2>
+                    Información
+                </h2>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🏫 Establecimiento
+                    </strong>
+
+                    <span>
+                        Liceo Antonio Varas de la Barra
+                    </span>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        📍 Dirección
+                    </strong>
+
+                    <span>
+                        Avenida Loa #2200<br>
+                        Arica, Chile
+                    </span>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🎓 Enseñanza
+                    </strong>
+
+                    <span>
+                        Educación Media Técnico Profesional
+                    </span>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        💻 OpenEduca
+                    </strong>
+
+                    <span>
+                        Plataforma digital para estudiantes.
+                    </span>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🌐 Sitio del liceo
+                    </strong>
+
+                    <span>
+                        liceoavb.cl
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        OpenEduca · Proyecto escolar 2026
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           ABRIR PANELES
+        ========================== */
+
+        function abrirPanel(id) {
+
+            const panel =
+                document.getElementById(id);
+
+            const abierto =
+                panel.classList.contains("mostrar");
+
+
+            // Cerrar todos los paneles
+
+            document
+                .querySelectorAll(".panel")
+                .forEach(function(p) {
+
+                    p.classList.remove("mostrar");
+
+                });
+
+
+            // Abrir el seleccionado
+
+            if (!abierto) {
+
+                panel.classList.add("mostrar");
+
+            }
+
+        }
+
+
+        /* =========================
+           MODO OSCURO
+        ========================== */
+
+        function modoOscuro() {
+
+            document.body
+                .classList.toggle("oscuro");
+
+
+            document
+                .getElementById("switchOscuro")
+                .classList.toggle("activo");
+
+        }
+
+
+        /* =========================
+           CONTACTO
+        ========================== */
+
+        function mostrarContacto() {
+
+            alert(
+
+                "CONTACTO\n\n" +
+
+                "Liceo Antonio Varas de la Barra\n\n" +
+
+                "Av. Loa #2200\n" +
+
+                "Arica, Chile"
+
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
