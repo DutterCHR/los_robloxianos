@@ -34,7 +34,6 @@ facilitando la búsqueda y ubicación de salas de clases, además de proporciona
 * Desarrollo de una aplicación móvil nativa para Android o iOS en esta etapa.
 * Navegación GPS en tiempo real dentro del establecimiento.
 * Reconocimiento automático del contenido de las imágenes de los horarios.
-* Integración automática con sistemas externos del establecimiento.
 * Automatización de la asignación de docentes a cursos sin intervención del personal correspondiente.
 
 ## Resultado esperado al 27/10/2026
