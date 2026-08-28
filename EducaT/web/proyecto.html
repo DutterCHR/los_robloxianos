@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OpenEduca</title>
+    <title>LiceoMap</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -28,7 +28,7 @@
             </div>
 
             <h2>
-                OpenEduca
+                LiceoMap
             </h2>
 
         </div>
@@ -229,7 +229,7 @@
         <section class="bienvenida">
 
             <h1>
-                Bienvenido a OpenEduca
+                Bienvenido a LiceoMap
             </h1>
 
             <p>
@@ -440,7 +440,7 @@
                 <div class="dato">
 
                     <strong>
-                        💻 OpenEduca
+                        💻 LiceoMap
                     </strong>
 
                     <span>
@@ -475,7 +475,7 @@
 
     <footer>
 
-        OpenEduca · Proyecto escolar 2026
+        LiceoMap · Proyecto escolar 2026
 
     </footer>
 
@@ -484,81 +484,196 @@
          JAVASCRIPT
     ========================== -->
 
-    <script>
+   <script>
 
-        /* =========================
-           ABRIR PANELES
-        ========================== */
+/* =========================
+   ABRIR PANELES
+========================= */
 
-        function abrirPanel(id) {
+function abrirPanel(id) {
 
-            const panel =
-                document.getElementById(id);
+    const panel = document.getElementById(id);
 
-            const abierto =
-                panel.classList.contains("mostrar");
-
-
-            // Cerrar todos los paneles
-
-            document
-                .querySelectorAll(".panel")
-                .forEach(function(p) {
-
-                    p.classList.remove("mostrar");
-
-                });
+    const abierto =
+        panel.classList.contains("mostrar");
 
 
-            // Abrir el seleccionado
+    // Cerrar todos los paneles
 
-            if (!abierto) {
+    document
+        .querySelectorAll(".panel")
+        .forEach(function(p) {
 
-                panel.classList.add("mostrar");
+            p.classList.remove("mostrar");
+
+        });
+
+
+    // Abrir el panel seleccionado
+
+    if (!abierto) {
+
+        panel.classList.add("mostrar");
+
+    }
+
+}
+
+
+/* =========================
+   MODO OSCURO
+========================= */
+
+function modoOscuro() {
+
+    // Cambiar el modo actual
+
+    document.body.classList.toggle("oscuro");
+
+
+    // Comprobar si quedó activado
+
+    const oscuro =
+        document.body.classList.contains("oscuro");
+
+
+    // Cambiar el estado visual del interruptor
+
+    const switchOscuro =
+        document.getElementById("switchOscuro");
+
+    if (oscuro) {
+
+        switchOscuro.classList.add("activo");
+
+    } else {
+
+        switchOscuro.classList.remove("activo");
+
+    }
+
+
+    // Guardar la configuración
+
+    localStorage.setItem(
+        "modoOscuro",
+        oscuro
+    );
+
+}
+
+
+/* =========================
+   CARGAR MODO OSCURO GUARDADO
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        // Obtener configuración guardada
+
+        const modoGuardado =
+            localStorage.getItem("modoOscuro");
+
+
+        // Si estaba activado anteriormente
+
+        if (modoGuardado === "true") {
+
+            document.body.classList.add("oscuro");
+
+
+            // Activar visualmente el switch
+
+            const switchOscuro =
+                document.getElementById("switchOscuro");
+
+            if (switchOscuro) {
+
+                switchOscuro.classList.add("activo");
 
             }
 
         }
 
-
-        /* =========================
-           MODO OSCURO
-        ========================== */
-
-        function modoOscuro() {
-
-            document.body
-                .classList.toggle("oscuro");
+    }
+);
 
 
-            document
-                .getElementById("switchOscuro")
-                .classList.toggle("activo");
+/* =========================
+   SALAS
+========================= */
 
-        }
+function mostrarSalas() {
+
+    alert(
+        "SALAS\n\n" +
+
+        "Edificio A\n" +
+        "Salas 101 - 105\n\n" +
+
+        "Edificio B\n" +
+        "Salas 201 - 205"
+    );
+
+}
 
 
-        /* =========================
-           CONTACTO
-        ========================== */
+/* =========================
+   HORARIOS
+========================= */
 
-        function mostrarContacto() {
+function mostrarHorario() {
 
-            alert(
+    alert(
+        "HORARIO\n\n" +
 
-                "CONTACTO\n\n" +
+        "08:00 - Matemática\n" +
+        "09:30 - Lenguaje\n" +
+        "11:00 - Ciencias\n" +
+        "12:30 - Almuerzo"
+    );
 
-                "Liceo Antonio Varas de la Barra\n\n" +
+}
 
-                "Av. Loa #2200\n" +
 
-                "Arica, Chile"
+/* =========================
+   BIBLIOTECA
+========================= */
 
-            );
+function mostrarBiblioteca() {
 
-        }
+    alert(
+        "BIBLIOTECA\n\n" +
 
-    </script>
+        "Horario de atención:\n" +
+
+        "08:00 - 17:30"
+    );
+
+}
+
+
+/* =========================
+   CONTACTO
+========================= */
+
+function mostrarContacto() {
+
+    alert(
+        "CONTACTO\n\n" +
+
+        "Liceo Antonio Varas de la Barra\n\n" +
+
+        "Av. Loa #2200\n" +
+
+        "Arica, Chile"
+    );
+
+}
+
+</script>
 
 
 </body>
