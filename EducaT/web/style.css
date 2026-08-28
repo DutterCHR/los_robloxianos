@@ -33,7 +33,9 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 30px;
+    /* MODIFICADO:
+       Centra la cabecera con el contenido principal */
+    padding: 0 max(30px, calc((100% - 1200px) / 2 + 25px));
 }
 
 .logo {
