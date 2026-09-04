@@ -1,0 +1,165 @@
+/*
+========================================================
+ OPENEDUCA
+ MAPA INTERACTIVO DEL LICEO ANTONIO VARAS DE LA BARRA
+========================================================
+*/
+
+const ALTO_MAPA = 1000;
+const ANCHO_MAPA = 600;
+const limites = [[0, 0], [ALTO_MAPA, ANCHO_MAPA]];
+
+// Inicialización del mapa en plano 2D
+const mapa = L.map("mapa", {
+    crs: L.CRS.Simple,
+    minZoom: -1,
+    maxZoom: 2,
+    zoomControl: true,
+    attributionControl: false,
+    maxBoundsViscosity: 1.0
+});
+
+mapa.fitBounds(limites);
+mapa.setMaxBounds(limites);
+
+// Estilo unificado para los muros del plano
+const estiloPared = {
+    color: "#000000",
+    weight: 4,
+    lineCap: "round",
+    lineJoin: "round"
+};
+
+/*
+========================================================
+ DIBUJO VECTORIAL DEL PLANO (ESTRUCTURA EXACTA)
+========================================================
+*/
+
+// Muros exteriores del establecimiento
+L.polyline([[50, 30], [900, 30], [900, 560], [550, 560], [550, 440], [50, 440]], estiloPared).addTo(mapa);
+L.polyline([[50, 440], [50, 160]], estiloPared).addTo(mapa);
+L.polyline([[50, 110], [50, 30]], estiloPared).addTo(mapa); // Apertura para la entrada principal
+
+// Pasillo superior (donde se ubica el Lab. de Programación)
+L.polyline([[850, 30], [850, 310]], estiloPared).addTo(mapa);
+L.polyline([[900, 310], [850, 310], [850, 560]], estiloPared).addTo(mapa);
+L.polyline([[870, 430], [870, 560]], estiloPared).addTo(mapa);
+
+// Bloque de salas superior izquierdo
+L.polygon([[620, 70], [820, 70], [820, 285], [620, 285]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polyline([[760, 70], [760, 110]], estiloPared).addTo(mapa);
+L.polyline([[700, 70], [700, 110]], estiloPared).addTo(mapa);
+L.polyline([[660, 70], [660, 110]], estiloPared).addTo(mapa);
+L.polyline([[660, 110], [820, 110]], estiloPared).addTo(mapa);
+L.polyline([[660, 110], [660, 285]], estiloPared).addTo(mapa);
+
+// Pasillo horizontal central
+L.polyline([[600, 70], [600, 290]], estiloPared).addTo(mapa);
+L.polyline([[500, 70], [500, 300]], estiloPared).addTo(mapa);
+
+// Bloque de Inspectoría
+L.polygon([[510, 70], [590, 70], [590, 170], [510, 170]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polyline([[510, 110], [590, 110]], estiloPared).addTo(mapa);
+
+// Bloque central (Laboratorio de Computación y recintos adyacentes)
+L.polygon([[670, 330], [800, 330], [800, 420], [670, 420]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polyline([[735, 330], [735, 420]], estiloPared).addTo(mapa);
+L.polygon([[570, 330], [650, 330], [650, 420], [570, 420]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polyline([[570, 375], [650, 375]], estiloPared).addTo(mapa);
+
+// Patio Superior Este
+L.polygon([[560, 460], [810, 460], [810, 540], [560, 540]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polygon([[630, 470], [740, 470], [740, 530], [630, 530]], { ...estiloPared, fill: false }).addTo(mapa);
+
+// Columnas de salas en sector inferior izquierdo y muro en L
+for (let y = 210; y <= 420; y += 35) {
+    L.rectangle([[y, 70], [y + 35, 110]], { ...estiloPared, fill: false }).addTo(mapa);
+}
+L.polyline([[210, 125], [470, 125], [470, 295], [455, 295], [455, 140], [210, 140]], estiloPared).addTo(mapa);
+
+// Cancha / Patio Central
+L.rectangle([[300, 330], [520, 430]], { ...estiloPared, fill: false }).addTo(mapa);
+
+// Módulo inferior (Administración)
+L.rectangle([[100, 160], [220, 390]], { ...estiloPared, fill: false }).addTo(mapa);
+L.polyline([[160, 160], [160, 390]], estiloPared).addTo(mapa);
+L.polyline([[100, 200], [220, 200]], estiloPared).addTo(mapa);
+L.polyline([[100, 240], [220, 240]], estiloPared).addTo(mapa);
+L.polyline([[100, 310], [220, 310]], estiloPared).addTo(mapa);
+L.polyline([[100, 350], [220, 350]], estiloPared).addTo(mapa);
+
+/*
+========================================================
+ FUNCIÓN CREADORA DE PUNTOS
+========================================================
+*/
+function crearPunto(nombre, icono, posicion, color, descripcion) {
+    const punto = L.circleMarker(posicion, {
+        radius: 13,
+        color: "#ffffff",
+        weight: 2,
+        fillColor: color,
+        fillOpacity: 1
+    }).addTo(mapa);
+
+    punto.bindTooltip(`${icono} ${nombre}`, {
+        permanent: false,
+        direction: "top",
+        sticky: true
+    });
+
+    punto.bindPopup(`
+        <div style="min-width:180px">
+            <strong style="font-size:16px;">${icono} ${nombre}</strong>
+            <br><br>
+            ${descripcion}
+        </div>
+    `);
+
+    punto.on("mouseover", function() { this.setRadius(17); });
+    punto.on("mouseout", function() { this.setRadius(13); });
+
+    return punto;
+}
+
+/*
+========================================================
+ PUNTOS DEL MAPA (MAPPING POR COLORES DE LA IMAGEN)
+========================================================
+*/
+
+// 🟢 Entrada (Punto Verde)
+crearPunto("Entrada Principal", "🚪", [135, 135], "#2ecc71", "Acceso principal al establecimiento.");
+
+// 🟣 Laboratorio de Programación (Punto Morado)
+crearPunto("Laboratorio de Programación", "💻", [875, 115], "#9b59b6", "Laboratorio de programación.");
+
+// 🩵 Inspectoría (Punto Celeste)
+crearPunto("Inspectoría", "🧑‍🏫", [550, 90], "#00bcd4", "Oficina de inspectoría.");
+
+// 🟠 Laboratorio de Computación (Punto Naranjo)
+crearPunto("Laboratorio de Computación", "🖥️", [735, 372], "#ff9800", "Laboratorio de computación general.");
+
+// 🟡 Patios (Puntos Amarillos)
+crearPunto("Patio Central / Cancha", "🏀", [410, 380], "#f1c40f", "Patio central y zona deportiva.");
+crearPunto("Patio Este", "☀️", [685, 500], "#f1c40f", "Patio del sector este.");
+
+// 🔴 Administración (Punto Rojo)
+crearPunto("Administración", "📍", [230, 260], "#e74c3c", "Sector administrativo central.");
+
+/*
+========================================================
+ COMPORTAMIENTO Y NAVEGACIÓN
+========================================================
+*/
+mapa.on("drag", function() {
+    mapa.panInsideBounds(limites, { animate: false });
+});
+
+mapa.on("popupopen", function(e) {
+    const elemento = e.popup.getElement();
+    if (elemento) {
+        elemento.style.animation = "aparecerPopup .2s ease";
+    }
+});
